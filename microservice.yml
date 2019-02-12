@@ -1,0 +1,40 @@
+omg: 1
+lifecycle:
+  startup:
+    command: ["node", "app.js"]
+info:
+  version: 1.0.0
+  title: Dropbox
+  description: Dropbox Service
+  contact:
+    name: Rohit S
+    url: https://github.com/heaptracetechnology/dropbox-microservice
+    email: rohits@heaptrace.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT 
+actions:
+  dropboxfilelist:
+    help: List all folders
+    http:
+      port: 3000
+      method: get
+      path: /db-list-files
+      contentType: application/json
+    output:
+      type: any
+  dropboxdeletefile:
+    help: Upload a file
+    http:
+      port: 3000
+      method: get
+      path: /db-upload-files
+      contentType: application/json
+    output:
+      type: any 
+
+environment:
+  accessToken:
+    type: string
+    required: true
+    help: access token for dropbox

@@ -1,0 +1,27 @@
+{
+  "name": "microsevice_dropbox",
+  "version": "1.0.0",
+  "description": "Microservice for dropbox",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dropbox": "^4.0.15",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "isomorphic-fetch": "^2.2.1",
+    "request": "^2.88.0",
+    "should": "^13.2.3",
+    "supertest": "^3.4.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nock": "^10.0.6"
+  }
+}
