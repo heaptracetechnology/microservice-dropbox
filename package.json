@@ -11,10 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "document": "^0.4.7",
     "dropbox": "^4.0.15",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "isomorphic-fetch": "^2.2.1",
+    "multer": "^1.4.1",
     "request": "^2.88.0",
     "should": "^13.2.3",
     "supertest": "^3.4.2"

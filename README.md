@@ -1,9 +1,9 @@
-# Dropbox File Listing as a microservice
-An OMG service to get the list of all Files from dropbox account.
+# Dropbox services as a microservice
+An OMG service access Dropbox
 
 [![Open Microservice Guide](https://img.shields.io/badge/OMG-enabled-brightgreen.svg?style=for-the-badge)](https://microservice.guide)
 
-This microservice's goal is fetch all the files from dropbox user account.
+This microservice is to do operations on Dropbox
 
 ## [OMG](hhttps://microservice.guide) CLI
 
@@ -23,7 +23,11 @@ omg build
 
 ### CLI
 ```sh
+* Get file list
 $ omg run dropboxfilelist -e accessToken=<ACCESS_TOKEN>
+
+*Get user details 
+$ omg run dropboxuserdetails -e accessToken=<ACCESS_TOKEN>
 ```
 
 ### Postman
@@ -38,9 +42,8 @@ $ omg run dropboxfilelist -e accessToken=<ACCESS_TOKEN>
 ## Docker
 ### Build
 ```
-docker build --rm -f "Dockerfile" -t dropboxfilelist .
+docker build --rm -f "Dockerfile" -t dropboxmicroservices .
 ```
 ### RUN
 ```
-docker run -p 3000:3000 dropboxfilelist
-```
+docker run -p 3000:3000 dropboxmicroservices

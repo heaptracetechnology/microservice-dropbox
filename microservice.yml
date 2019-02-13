@@ -23,7 +23,25 @@ actions:
       contentType: application/json
     output:
       type: any
-  dropboxdeletefile:
+  dropboxuserdetails:
+    help: Get current user details
+    http:
+      port: 3000
+      method: get
+      path: /db-get-useraccount
+      contentType: application/json
+    output:
+      type: any 
+  dropboxuploadfile:
+    arguments:
+      filename:
+        type: string
+        in: requestBody
+        help: Name of the file to be created
+      filecontent:
+        type: string
+        in: requestBody
+        help: Content of the file
     help: Upload a file
     http:
       port: 3000
