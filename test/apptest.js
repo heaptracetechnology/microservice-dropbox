@@ -31,7 +31,7 @@ describe('db-list-files', function () {
 });
 
 
-describe('db-list-files', function () {
+describe('Validate API key', function () {
 
     beforeEach(() => {
         nock('http://localhost:3000')
@@ -44,6 +44,91 @@ describe('db-list-files', function () {
             url: 'http://localhost:3000/db-list-files',
         }, function (error, response) {
             expect(response.body).to.equal('Please provide API Key');
+        });
+        done();
+    });
+
+
+});
+
+
+describe('Get user account details', function () {
+
+    beforeEach(() => {
+        nock('http://localhost:3000')
+            .get('/db-get-useraccount')
+            .reply(200,{"account_id":"dbid:AADzPUkRnzu3-LNWYS8M0IEacs6A7w4","name":{"given_name":"John","surname":"K","familiar_name":"John","display_name":"John S","abbreviated_name":"JS"},"email":"john@gmail.com","email_verified":true,"disabled":false,"country":"US","locale":"en","referral_link":"https://db.tt/p3sIvNiHnJ","is_paired":false,"account_type":{".tag":"basic"},"root_info":{".tag":"user","root_namespace_id":"4917046224","home_namespace_id":"4917046224"}} )
+    });
+
+    it('User Account details', function (done) {
+
+        request.get({
+            url: 'http://localhost:3000/db-get-useraccount',
+        }, function (error, response) {
+
+            var res = JSON.parse(response.body);
+            expect(typeof res).to.equal('object');
+            expect(res.name.given_name).to.equal("John");
+            expect(res.account_id).to.equal('dbid:AADzPUkRnzu3-LNWYS8M0IEacs6A7w4');
+            expect(res.referral_link).to.equal('https://db.tt/p3sIvNiHnJ');
+
+
+        });
+        done();
+    });
+
+
+});
+
+
+
+
+
+describe('Upload Files', function () {
+
+    beforeEach(() => {
+        nock('http://localhost:3000')
+            .get('/db-upload-files')
+            .reply(200,"File Uploaded Successfully...." )
+    });
+
+    it('Upload Files', function (done) {
+
+        request.get({
+            url: 'http://localhost:3000/db-upload-files',
+        }, function (error, response) {
+
+            var res = response.body;
+            expect(res).to.equal('File Uploaded Successfully....');
+
+
+        });
+        done();
+    });
+
+
+});
+
+
+
+describe('Download File', function () {
+
+    beforeEach(() => {
+        nock('http://localhost:3000')
+            .get('/db-download-files')
+            .reply(200,"Base64Data" )
+    });
+
+    it('Upload Files', function (done) {
+
+        request.get({
+            url: 'http://localhost:3000/db-download-files',
+        }, function (error, response) {
+
+            var res = response.body;
+            expect(res).to.equal('Base64Data');
+
+
         });
         done();
     });

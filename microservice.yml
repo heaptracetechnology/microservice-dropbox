@@ -14,7 +14,7 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT 
 actions:
-  dropboxfilelist:
+  list:
     help: List all folders
     http:
       port: 3000
@@ -23,7 +23,7 @@ actions:
       contentType: application/json
     output:
       type: any
-  dropboxuserdetails:
+  userinfo:
     help: Get current user details
     http:
       port: 3000
@@ -32,21 +32,39 @@ actions:
       contentType: application/json
     output:
       type: any 
-  dropboxuploadfile:
+  upload:
     arguments:
       filename:
         type: string
         in: requestBody
-        help: Name of the file to be created
+        help: Name of the file to be uploaded
       filecontent:
+        type: any
+        in: requestBody
+        help: Content of the file in base64 format
+      filetype:
         type: string
         in: requestBody
-        help: Content of the file
+        help: Type of the file to be uploaded
     help: Upload a file
     http:
       port: 3000
-      method: get
-      path: /db-upload-files
+      method: post
+      path: /db-download-files
+      contentType: application/json
+    output:
+      type: any 
+  download:
+    arguments:
+      url:
+        type: string
+        in: requestBody
+        help: Shared of the file to be downloaded
+    help: download a file
+    http:
+      port: 3000
+      method: post
+      path: /db-download-files
       contentType: application/json
     output:
       type: any 

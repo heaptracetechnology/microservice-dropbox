@@ -24,10 +24,16 @@ omg build
 ### CLI
 ```sh
 * Get file list
-$ omg run dropboxfilelist -e accessToken=<ACCESS_TOKEN>
+$ omg run list -e accessToken=<ACCESS_TOKEN>
 
 *Get user details 
-$ omg run dropboxuserdetails -e accessToken=<ACCESS_TOKEN>
+$ omg run userinfo -e accessToken=<ACCESS_TOKEN>
+
+*Upload file
+$ omg run upload -e accessToken=<ACCESS_TOKEN> -a filename=<filename> filecontent=<Base64FileData> filetype=<filetype>
+
+*download file
+$ omg run download -e accessToken=<ACCESS_TOKEN> -a url=<url>
 ```
 
 ### Postman
