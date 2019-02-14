@@ -50,7 +50,7 @@ actions:
     http:
       port: 3000
       method: post
-      path: /db-download-files
+      path: /db-upload-files
       contentType: application/json
     output:
       type: any 
