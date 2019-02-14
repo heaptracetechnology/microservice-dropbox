@@ -7,55 +7,63 @@ info:
   title: Dropbox
   description: Dropbox Service
   contact:
-    name: Rohit S
+    name: Rohit Shetty
     url: https://github.com/heaptracetechnology/dropbox-microservice
     email: rohits@heaptrace.com
   license:
     name: MIT
-    url: https://opensource.org/licenses/MIT 
+    url: https://opensource.org/licenses/MIT
 actions:
   list:
-    help: List all folders
+    help: List all folders response example [{".tag":"file","name":"Get Started with Dropbox Paper.url","content_hash":"f40c1228343d7e2a632281c986dbb7af3491b9b63ddfd0eb10fee2c913f6cfa7"},{".tag":"file","name":"Get Started with Dropbox.pdf","path_lower":"/get started with dropbox.pdf","content_hash":"f7ad488deb7d81790340ecd676fe6e47f0a606dfd42982685b752d58611c1cb"},......}]
     http:
       port: 3000
       method: get
-      path: /db-list-files
+      path: /list
       contentType: application/json
     output:
-      type: any
-  userinfo:
-    help: Get current user details
+      type: string
+  userinfo: 
+    help: User Information example response {"account_id":"dbid:AXDEsdwaLqX2aKYUxerdf859ShaHnH0","name":{"given_name":"Abc","surname":"Xyz","abbreviated_name":"AX"},"referral_link":"https://db.tt/ja2SXcsD4wfJ","root_info":{".tag":"user","root_namespace_id":"4458265120",.....}}
     http:
       port: 3000
       method: get
-      path: /db-get-useraccount
+      path: /userinfo
       contentType: application/json
     output:
-      type: any 
+      type: string 
   upload:
+    help: Upload file using filename, filecontent, filetype : example response output: {"name":"Demo-test.txt","path_display":"/Demo-test.txt","client_modified":"2019-02-14T12:18:12Z",,"content_hash":"273b76fe8ce27b8a54301f0bc5fdsfsdf557ceae69dc8d56db9f74bbfbd71910889",.......}
     arguments:
       filename:
         type: string
         in: requestBody
+        required: true        
         help: Name of the file to be uploaded
       filecontent:
         type: any
         in: requestBody
         help: Content of the file in base64 format
+        required: true
       filetype:
         type: string
         in: requestBody
+        required: true
         help: Type of the file to be uploaded
-    help: Upload a file
     http:
       port: 3000
       method: post
-      path: /db-upload-files
+      path: /upload
       contentType: application/json
     output:
-      type: any 
+      type: string 
   download:
+    help : download file using path or url , example of response : example response {"name":"Demo-test.txt","content_hash":"273b76fe8ce27b8a54301f0bc5fd1ab37ceae69dc8d56db9f74bbfbd71910889","fileBinary":[], ....}
     arguments:
+      path:
+        type: string
+        in: requestBody
+        help: Path of file to be downloaded.
       url:
         type: string
         in: requestBody
@@ -64,13 +72,12 @@ actions:
     http:
       port: 3000
       method: post
-      path: /db-download-files
+      path: /download
       contentType: application/json
     output:
-      type: any 
-
+      type: string
 environment:
-  accessToken:
+  ACCESS_TOKEN:
     type: string
     required: true
     help: access token for dropbox

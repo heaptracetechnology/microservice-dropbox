@@ -24,16 +24,16 @@ omg build
 ### CLI
 ```sh
 * Get file list
-$ omg run list -e accessToken=<ACCESS_TOKEN>
+$ omg run list -e ACCESS_TOKEN=<ACCESS_TOKEN>
 
-*Get user details 
-$ omg run userinfo -e accessToken=<ACCESS_TOKEN>
+* Get user details 
+$ omg run userinfo -e ACCESS_TOKEN=<ACCESS_TOKEN>
 
-*Upload file
-$ omg run upload -e accessToken=<ACCESS_TOKEN> -a filename=<filename> filecontent=<Base64FileData> filetype=<filetype>
+* Upload file
+$ omg run upload -e ACCESS_TOKEN=<ACCESS_TOKEN> -a filename=<FILENAME> filecontent=<Base64FileData> filetype=<FILE_TYPE>
 
-*download file
-$ omg run download -e accessToken=<ACCESS_TOKEN> -a url=<url>
+* download file with url/path
+$ omg run download -e ACCESS_TOKEN=<ACCESS_TOKEN> -a url=<URL>/-a path=<PATH>
 ```
 
 ### Postman
