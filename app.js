@@ -28,7 +28,6 @@ app.all('/*', function (request, response, next) {
 app.get('/list', function (request, response) {
   dbx.filesListFolder({ path: '' })
     .then(function (res) {
-      //return response.status(HttpStatus.OK).send(res.entries);
       return response.status(HttpStatus.OK).send(res);
     })
     .catch(function (error) {
