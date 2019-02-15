@@ -19,7 +19,6 @@ app.all('/*', function (request, response, next) {
   if (ACCESS_TOKEN == undefined) {
     message.error = "Please provide ACCESS_TOKEN";
     return response.status(HttpStatus.BAD_REQUEST).send(message);
-
   }
  dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN, fetch: fetch });
  next();
@@ -29,8 +28,8 @@ app.all('/*', function (request, response, next) {
 app.get('/list', function (request, response) {
   dbx.filesListFolder({ path: '' })
     .then(function (res) {
-      return response.status(HttpStatus.OK).send(res.entries);
-       
+      //return response.status(HttpStatus.OK).send(res.entries);
+      return response.status(HttpStatus.OK).send(res);
     })
     .catch(function (error) {
       message.error = error;
@@ -85,7 +84,6 @@ app.post('/download', function (request, response) {
   if (path) {
     dbx.filesDownload({ path: path })
       .then(function (data) {
-        var binary = data.fileBinary;
         return response.status(HttpStatus.OK).send(data);
       })
       .catch(function (error) {

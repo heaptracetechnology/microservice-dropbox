@@ -22,19 +22,25 @@ actions:
       path: /list
       contentType: application/json
     output: 
-      type: string
+      type: map
       properties:
         name:
+          help: The file name
           type: string
         path_lower:
+          help: The lower path
           type: string
         path_display:
+          help: The display path
           type: string
         id:
+          help: The file id
           type: string
         client_modified:
+          help: The client modified date time 
           type: string
         content_hash:
+          help: The content of hash (eg- "f40c1228343d7e2a632281c75w7d5w7x3491b9b63ddfd0eb10fee2c913f6cfa7")
           type: string
   userinfo:
     help: Get user information 
@@ -48,20 +54,28 @@ actions:
       contentType: application/json
       properties:
         account_id:
+          help: The user account id
           type: string 
         name:
+          help: The object of name with "given_name","surname","familiar_name","display_name","abbreviated_name"
           type: object
         email: 
+          help: The user email address
           type: string
         email_verified:
+          help: The email varification (eg- "true"/"false")
           type: boolean
         country:
+          help: The country abbrivation
           type: string
         referral_link:
+          help: The dropbox accout referral link  
           type: string
         account_type:
+          help: The account type (eg- basic)
           type: object
         root_info:
+          help: The root_info object with "root_namespace_id","home_namespace_id"
           type: object
   upload:
     help: Upload file using filename
@@ -87,19 +101,25 @@ actions:
       path: /upload
       contentType: application/json
     output: 
-      type: string
+      type: object
       properties:
         name:
+          help: The file name
           type: string
         path_lower:
+          help: The lower path
           type: string
         path_display:
+          help: The display path
           type: string
         id:
+          help: The file id
           type: string
         client_modified:
+          help: The client modified date time 
           type: string
         content_hash:
+          help: The content of hash (eg- "f40c1228343d7e2a632281c75w7d5w7x3491b9b63ddfd0eb10fee2c913f6cfa7")
           type: string
   download:
     help : download file using path or url
@@ -112,26 +132,31 @@ actions:
         type: string
         in: requestBody
         help: Shared of the file to be downloaded
-    help: download a file
     http:
       port: 3000
       method: post
       path: /download
       contentType: application/json
     output:
-      type: string
+      type: object
       properties:
         url:
+          help: The url for file (for "url" argument)
           type: string
         id:
+          help: The file id (for "url and path" argument)
           type: string
         name:
+          help: The file name (for "url and path" argument)
           type: string
         link_permissions:
+          help: The access permission for link (for "url" argument)
           type: object
         allow_download:
+          help: The download permission from link (for "url" argument)
           type: boolean
         fileBinary:
+          help: The binary object of file content (for "url and path" argument)
           type: object
 environment:
   ACCESS_TOKEN:
