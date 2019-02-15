@@ -37,7 +37,7 @@ actions:
         content_hash:
           type: string
   userinfo:
-    help: User Information 
+    help: Get user information 
     http:
       port: 3000
       method: get
