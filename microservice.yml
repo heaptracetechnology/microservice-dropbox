@@ -15,25 +15,56 @@ info:
     url: https://opensource.org/licenses/MIT
 actions:
   list:
-    help: List all folders response example [{".tag":"file","name":"Get Started with Dropbox Paper.url","content_hash":"f40c1228343d7e2a632281c986dbb7af3491b9b63ddfd0eb10fee2c913f6cfa7"},{".tag":"file","name":"Get Started with Dropbox.pdf","path_lower":"/get started with dropbox.pdf","content_hash":"f7ad488deb7d81790340ecd676fe6e47f0a606dfd42982685b752d58611c1cb"},......}]
+    help: List all folders
     http:
       port: 3000
       method: get
       path: /list
       contentType: application/json
-    output:
+    output: 
       type: string
-  userinfo: 
-    help: User Information example response {"account_id":"dbid:AXDEsdwaLqX2aKYUxerdf859ShaHnH0","name":{"given_name":"Abc","surname":"Xyz","abbreviated_name":"AX"},"referral_link":"https://db.tt/ja2SXcsD4wfJ","root_info":{".tag":"user","root_namespace_id":"4458265120",.....}}
+      properties:
+        name:
+          type: string
+        path_lower:
+          type: string
+        path_display:
+          type: string
+        id:
+          type: string
+        client_modified:
+          type: string
+        content_hash:
+          type: string
+  userinfo:
+    help: User Information 
     http:
       port: 3000
       method: get
       path: /userinfo
       contentType: application/json
     output:
-      type: string 
+      type: object
+      contentType: application/json
+      properties:
+        account_id:
+          type: string 
+        name:
+          type: object
+        email: 
+          type: string
+        email_verified:
+          type: boolean
+        country:
+          type: string
+        referral_link:
+          type: string
+        account_type:
+          type: object
+        root_info:
+          type: object
   upload:
-    help: Upload file using filename, filecontent, filetype : example response output: {"name":"Demo-test.txt","path_display":"/Demo-test.txt","client_modified":"2019-02-14T12:18:12Z",,"content_hash":"273b76fe8ce27b8a54301f0bc5fdsfsdf557ceae69dc8d56db9f74bbfbd71910889",.......}
+    help: Upload file using filename
     arguments:
       filename:
         type: string
@@ -55,10 +86,23 @@ actions:
       method: post
       path: /upload
       contentType: application/json
-    output:
-      type: string 
+    output: 
+      type: string
+      properties:
+        name:
+          type: string
+        path_lower:
+          type: string
+        path_display:
+          type: string
+        id:
+          type: string
+        client_modified:
+          type: string
+        content_hash:
+          type: string
   download:
-    help : download file using path or url , example of response : example response {"name":"Demo-test.txt","content_hash":"273b76fe8ce27b8a54301f0bc5fd1ab37ceae69dc8d56db9f74bbfbd71910889","fileBinary":[], ....}
+    help : download file using path or url
     arguments:
       path:
         type: string
@@ -76,6 +120,19 @@ actions:
       contentType: application/json
     output:
       type: string
+      properties:
+        url:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        link_permissions:
+          type: object
+        allow_download:
+          type: boolean
+        fileBinary:
+          type: object
 environment:
   ACCESS_TOKEN:
     type: string
