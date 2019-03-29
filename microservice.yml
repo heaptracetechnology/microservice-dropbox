@@ -14,6 +14,20 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 actions:
+  move:
+    help: TODO
+    http:
+      port: 3000
+      method: post
+      path: /list
+      contentType: application/json
+    arguments:
+      source:
+        type: string
+        in: requestBody
+      destination:
+        type: string
+        in: requestBody
   list:
     help: List all folders
     http:
