@@ -54,11 +54,11 @@ app.get('/userinfo', function (request, response) {
 //Upload File
 app.post('/upload', function (request, response) {
   
-  var Base64FileData = request.body.fileContent;
+  var base64FileData = request.body.fileContent;
   var filetype = request.body.fileType;
   var filename = request.body.fileName;
   
-  let fileContent = new Buffer.from(Base64FileData, 'base64');
+  let fileContent = new Buffer.from(base64FileData, 'base64');
   dbx.filesUpload({ path: '/' + filename + filetype, contents: fileContent })
     .then(function (res) {
       return response.status(HttpStatus.OK).send(res);
