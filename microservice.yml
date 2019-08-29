@@ -56,7 +56,7 @@ actions:
         content_hash:
           help: The content of hash (eg- "f40c1228343d7e2a632281c75w7d5w7x3491b9b63ddfd0eb10fee2c913f6cfa7")
           type: string
-  userinfo:
+  userInfo:
     help: Get user information 
     http:
       port: 3000
@@ -94,17 +94,17 @@ actions:
   upload:
     help: Upload file using filename
     arguments:
-      filename:
+      fileName:
         type: string
         in: requestBody
         required: true        
         help: Name of the file to be uploaded
-      filecontent:
+      fileContent:
         type: any
         in: requestBody
         help: Content of the file in base64 format
         required: true
-      filetype:
+      fileType:
         type: string
         in: requestBody
         required: true
