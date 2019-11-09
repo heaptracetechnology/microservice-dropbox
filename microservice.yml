@@ -1,7 +1,7 @@
-omg: 1
+oms: 1
 lifecycle:
   startup:
-    command: ["node", "app.js"]
+    command: ['node', 'app.js']
 info:
   version: 1.0.0
   title: Dropbox
@@ -14,20 +14,6 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 actions:
-  move:
-    help: TODO
-    http:
-      port: 3000
-      method: post
-      path: /list
-      contentType: application/json
-    arguments:
-      source:
-        type: string
-        in: requestBody
-      destination:
-        type: string
-        in: requestBody
   list:
     help: List all folders
     http:
@@ -35,8 +21,8 @@ actions:
       method: get
       path: /list
       contentType: application/json
-    output: 
-      type: map
+    output:
+      type: object
       properties:
         name:
           help: The file name
@@ -51,13 +37,15 @@ actions:
           help: The file id
           type: string
         client_modified:
-          help: The client modified date time 
+          help: The client modified date time
           type: string
         content_hash:
-          help: The content of hash (eg- "f40c1228343d7e2a632281c75w7d5w7x3491b9b63ddfd0eb10fee2c913f6cfa7")
+          help:
+            The content of hash (eg-
+            "f40c1228343d7e2a632281c75w7d5w7x3491b9b63ddfd0eb10fee2c913f6cfa7")
           type: string
   userInfo:
-    help: Get user information 
+    help: Get user information
     http:
       port: 3000
       method: get
@@ -69,11 +57,13 @@ actions:
       properties:
         account_id:
           help: The user account id
-          type: string 
+          type: string
         name:
-          help: The object of name with "given_name","surname","familiar_name","display_name","abbreviated_name"
-          type: object
-        email: 
+          help:
+            The object of name with
+            "given_name","surname","familiar_name","display_name","abbreviated_name"
+          type: map
+        email:
           help: The user email address
           type: string
         email_verified:
@@ -83,21 +73,22 @@ actions:
           help: The country abbrivation
           type: string
         referral_link:
-          help: The dropbox accout referral link  
+          help: The dropbox accout referral link
           type: string
         account_type:
           help: The account type (eg- basic)
-          type: object
+          type: map
         root_info:
-          help: The root_info object with "root_namespace_id","home_namespace_id"
-          type: object
+          help:
+            The root_info object with "root_namespace_id","home_namespace_id"
+          type: map
   upload:
     help: Upload file using filename
     arguments:
       fileName:
         type: string
         in: requestBody
-        required: true        
+        required: true
         help: Name of the file to be uploaded
       fileContent:
         type: any
@@ -114,7 +105,7 @@ actions:
       method: post
       path: /upload
       contentType: application/json
-    output: 
+    output:
       type: object
       properties:
         name:
@@ -130,13 +121,15 @@ actions:
           help: The file id
           type: string
         client_modified:
-          help: The client modified date time 
+          help: The client modified date time
           type: string
         content_hash:
-          help: The content of hash (eg- "f40c1228343d7e2a632281c75w7d5w7x3491b9b63ddfd0eb10fee2c913f6cfa7")
+          help:
+            The content of hash (eg-
+            "f40c1228343d7e2a632281c75w7d5w7x3491b9b63ddfd0eb10fee2c913f6cfa7")
           type: string
   download:
-    help : download file using path or url
+    help: download file using path or url
     arguments:
       path:
         type: string
@@ -165,13 +158,13 @@ actions:
           type: string
         link_permissions:
           help: The access permission for link (for "url" argument)
-          type: object
+          type: map
         allow_download:
           help: The download permission from link (for "url" argument)
           type: boolean
         fileBinary:
           help: The binary object of file content (for "url and path" argument)
-          type: object
+          type: map
 environment:
   ACCESS_TOKEN:
     type: string
