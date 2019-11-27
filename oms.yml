@@ -1,18 +1,20 @@
 oms: 1
-lifecycle:
-  startup:
-    command: ['node', 'app.js']
 info:
   version: 1.0.0
   title: Dropbox
   description: Dropbox Service
   contact:
-    name: Rohit Shetty
-    url: https://github.com/heaptracetechnology/dropbox-microservice
-    email: rohits@heaptrace.com
+    name: Open Microservices
+    url: 'https://openmicroservices.org'
+    email: core@openmicroservices.org
   license:
     name: MIT
-    url: https://opensource.org/licenses/MIT
+    url: 'https://opensource.org/licenses/MIT'
+lifecycle:
+  startup:
+    command:
+      - node
+      - app.js
 actions:
   list:
     help: List all folders
@@ -40,7 +42,7 @@ actions:
           help: The client modified date time
           type: string
         content_hash:
-          help:
+          help: >-
             The content of hash (eg-
             "f40c1228343d7e2a632281c75w7d5w7x3491b9b63ddfd0eb10fee2c913f6cfa7")
           type: string
@@ -59,7 +61,7 @@ actions:
           help: The user account id
           type: string
         name:
-          help:
+          help: >-
             The object of name with
             "given_name","surname","familiar_name","display_name","abbreviated_name"
           type: map
@@ -79,8 +81,7 @@ actions:
           help: The account type (eg- basic)
           type: map
         root_info:
-          help:
-            The root_info object with "root_namespace_id","home_namespace_id"
+          help: 'The root_info object with "root_namespace_id","home_namespace_id"'
           type: map
   upload:
     help: Upload file using filename
@@ -124,7 +125,7 @@ actions:
           help: The client modified date time
           type: string
         content_hash:
-          help:
+          help: >-
             The content of hash (eg-
             "f40c1228343d7e2a632281c75w7d5w7x3491b9b63ddfd0eb10fee2c913f6cfa7")
           type: string
